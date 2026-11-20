@@ -230,7 +230,7 @@ function readLocalPlugins(rootDir = process.cwd()) {
 export function formatMarkdownReport(result, { prAuthor = '' } = {}) {
   const lines = [];
   if (result.ok) {
-    lines.push('### ✅ 插件校验通过 (`ssh2work-plugins`)');
+    lines.push('### ✅ 插件校验通过 (`ssh4work-plugins`)');
     lines.push('');
     lines.push(`- **提交者身份**：${result.isMaintainer ? '🛡️ 仓库管理员 / 维护者' : '🤝 社区贡献者'}${prAuthor ? ` (@${prAuthor})` : ''}`);
     lines.push(`- **仓库插件总数**：${result.totalPlugins}`);

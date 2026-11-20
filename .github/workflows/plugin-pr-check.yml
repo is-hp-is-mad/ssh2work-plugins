@@ -93,7 +93,7 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const marker = '<!-- ssh2work-plugins-bot -->';
+            const marker = '<!-- ssh4work-plugins-bot -->';
             const result = JSON.parse(fs.readFileSync('validation-result.json', 'utf8'));
             const body = `${marker}\n${result.summaryMarkdown}`;
 

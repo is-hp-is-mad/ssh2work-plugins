@@ -1,6 +1,6 @@
-# ssh2work-plugins
+# ssh4work-plugins
 
-> **[ssh2work](https://github.com/is-hp-is-mad/ssh2work) 官方与社区插件仓库** —— 面向多服务器选手与远程开发工作流的纯 SSH 插件集合。
+> **[ssh4work](https://github.com/is-hp-is-mad/ssh4work) 官方与社区插件仓库** —— 面向多服务器选手与远程开发工作流的纯 SSH 插件集合。
 >
 > 特别鸣谢 **[LINUX DO 社区 (https://linux.do)](https://linux.do)** 的灵感碰撞与开源贡献！
 
@@ -11,7 +11,7 @@
 所有插件统一存放在 `plugins/<分类>/<插件ID>/plugin.json` 下，且目录名必须与 `plugin.json` 中的 `id` 字段完全一致：
 
 ```text
-ssh2work-plugins/
+ssh4work-plugins/
 ├── .github/
 │   └── workflows/
 │       └── plugin-pr-check.yml    # PR 自动化校验（动态权限 + 重复ID检测 + -community后缀校验 + Bot评论）

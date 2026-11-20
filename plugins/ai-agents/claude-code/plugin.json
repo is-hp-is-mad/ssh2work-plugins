@@ -2,7 +2,7 @@
   "id": "claude-code",
   "name": "Claude Code 助手",
   "version": "1.1.0",
-  "author": "ssh2work",
+  "author": "ssh4work",
   "category": "ai-agents",
   "description": "会话查找/预览/恢复/分叉，以及 Token 统计(缓存率/分时段/模型差异标红)",
   "tab": {

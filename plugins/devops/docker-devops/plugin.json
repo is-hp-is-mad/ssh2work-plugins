@@ -2,7 +2,7 @@
   "id": "docker-devops",
   "name": "Docker 远程运维工具箱",
   "version": "1.0.0",
-  "author": "ssh2work",
+  "author": "ssh4work",
   "category": "devops",
   "description": "常用 Docker 容器状态巡检与实时资源监控快捷指令集",
   "tab": null,

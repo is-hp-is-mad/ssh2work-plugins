@@ -33,7 +33,7 @@ for (const [relPath, raw] of [...localPlugins.entries()].sort((a, b) => a[0].loc
     id: data.id,
     name: data.name,
     version: data.version,
-    author: data.author || 'ssh2work',
+    author: data.author || 'ssh4work',
     category: data.category || parts[1] || 'general',
     description: data.description || '',
     tab: data.tab || null,

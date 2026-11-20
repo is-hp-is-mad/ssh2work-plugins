@@ -2,7 +2,7 @@
   "id": "opencode-cli",
   "name": "OpenCode 助手",
   "version": "1.0.0",
-  "author": "ssh2work",
+  "author": "ssh4work",
   "category": "ai-agents",
   "description": "扫描 OpenCode 会话，支持全局 AGENTS.md、Skills 与 opencode.json MCP 管理",
   "tab": {

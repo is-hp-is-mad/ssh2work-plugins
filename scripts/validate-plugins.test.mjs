@@ -6,7 +6,7 @@ const OFFICIAL_CLAUDE = JSON.stringify({
   id: 'claude-code',
   name: 'Claude Code 助手',
   version: '1.1.0',
-  author: 'ssh2work',
+  author: 'ssh4work',
   description: 'Claude Code helper',
 });
 
@@ -42,7 +42,7 @@ test('allows third-party PR to update/fix an existing plugin without duplicate o
     id: 'claude-code',
     name: 'Claude Code 助手',
     version: '1.1.1',
-    author: 'ssh2work',
+    author: 'ssh4work',
     description: 'Fixed typo in description',
   });
   const headPlugins = new Map([['plugins/ai-agents/claude-code/plugin.json', updated]]);
