@@ -1,0 +1,175 @@
+{
+  "version": 1,
+  "updatedAt": "2026-11-20T12:47:24.856Z",
+  "plugins": [
+    {
+      "id": "antigravity-cli",
+      "name": "Antigravity CLI (AGY)",
+      "version": "1.0.0",
+      "author": "ssh2work",
+      "category": "ai-agents",
+      "description": "扫描 ~/.gemini/antigravity-cli/brain 会话，支持搜索、预览与 agy 恢复",
+      "tab": {
+        "id": "agy",
+        "label": "AGY",
+        "agentType": "agy",
+        "requiresServer": true
+      },
+      "quickCommands": [
+        {
+          "id": "plugin-agy-new",
+          "name": "AGY 新会话",
+          "command": "agy",
+          "dir": ""
+        },
+        {
+          "id": "plugin-agy-cont",
+          "name": "AGY 继续 (-c)",
+          "command": "agy -c",
+          "dir": ""
+        }
+      ],
+      "path": "plugins/ai-agents/antigravity-cli/plugin.json"
+    },
+    {
+      "id": "claude-code",
+      "name": "Claude Code 助手",
+      "version": "1.1.0",
+      "author": "ssh2work",
+      "category": "ai-agents",
+      "description": "会话查找/预览/恢复/分叉，以及 Token 统计(缓存率/分时段/模型差异标红)",
+      "tab": {
+        "id": "sessions",
+        "label": "Claude Code",
+        "agentType": "claude",
+        "requiresServer": true
+      },
+      "quickCommands": [
+        {
+          "id": "plugin-claude-new",
+          "name": "Claude 新会话",
+          "command": "claude",
+          "dir": ""
+        },
+        {
+          "id": "plugin-claude-cont",
+          "name": "Claude 继续",
+          "command": "claude --continue",
+          "dir": ""
+        }
+      ],
+      "path": "plugins/ai-agents/claude-code/plugin.json"
+    },
+    {
+      "id": "codex-cli",
+      "name": "Codex CLI 助手",
+      "version": "1.0.0",
+      "author": "ssh2work",
+      "category": "ai-agents",
+      "description": "扫描 ~/.codex/sessions 会话，支持搜索、预览与 codex resume 恢复",
+      "tab": {
+        "id": "codex",
+        "label": "Codex",
+        "agentType": "codex",
+        "requiresServer": true
+      },
+      "quickCommands": [
+        {
+          "id": "plugin-codex-new",
+          "name": "Codex 新会话",
+          "command": "codex",
+          "dir": ""
+        },
+        {
+          "id": "plugin-codex-last",
+          "name": "Codex 继续上次",
+          "command": "codex resume --last",
+          "dir": ""
+        }
+      ],
+      "path": "plugins/ai-agents/codex-cli/plugin.json"
+    },
+    {
+      "id": "opencode-cli",
+      "name": "OpenCode 助手",
+      "version": "1.0.0",
+      "author": "ssh2work",
+      "category": "ai-agents",
+      "description": "扫描 OpenCode 会话，支持全局 AGENTS.md、Skills 与 opencode.json MCP 管理",
+      "tab": {
+        "id": "opencode",
+        "label": "OpenCode",
+        "agentType": "opencode",
+        "requiresServer": true
+      },
+      "quickCommands": [
+        {
+          "id": "plugin-opencode-new",
+          "name": "OpenCode 新会话",
+          "command": "opencode",
+          "dir": ""
+        },
+        {
+          "id": "plugin-opencode-cont",
+          "name": "OpenCode 继续 (-c)",
+          "command": "opencode -c",
+          "dir": ""
+        }
+      ],
+      "path": "plugins/ai-agents/opencode-cli/plugin.json"
+    },
+    {
+      "id": "pi-cli",
+      "name": "Pi Agent 助手",
+      "version": "1.0.0",
+      "author": "ssh2work",
+      "category": "ai-agents",
+      "description": "扫描 ~/.pi/agent/sessions 会话，支持全局 AGENTS.md、Skills 与 MCP 管理",
+      "tab": {
+        "id": "pi",
+        "label": "Pi",
+        "agentType": "pi",
+        "requiresServer": true
+      },
+      "quickCommands": [
+        {
+          "id": "plugin-pi-new",
+          "name": "Pi 新会话",
+          "command": "pi",
+          "dir": ""
+        },
+        {
+          "id": "plugin-pi-cont",
+          "name": "Pi 继续 (-c)",
+          "command": "pi -c",
+          "dir": ""
+        }
+      ],
+      "path": "plugins/ai-agents/pi-cli/plugin.json"
+    },
+    {
+      "id": "docker-devops",
+      "name": "Docker 远程运维工具箱",
+      "version": "1.0.0",
+      "author": "ssh2work",
+      "category": "devops",
+      "description": "常用 Docker 容器状态巡检与实时资源监控快捷指令集",
+      "tab": null,
+      "quickCommands": [
+        {
+          "id": "docker-ps",
+          "name": "容器列表 (ps)",
+          "command": "docker ps -a --format 'table {{.Names}}\\t{{.Status}}\\t{{.Ports}}'; echo; read -n 1 -s -r -p '按任意键退出...'",
+          "dir": "~"
+        },
+        {
+          "id": "docker-stats",
+          "name": "容器实时资源",
+          "command": "docker stats",
+          "dir": "~"
+        }
+      ],
+      "path": "plugins/devops/docker-devops/plugin.json"
+    }
+  ]
+}

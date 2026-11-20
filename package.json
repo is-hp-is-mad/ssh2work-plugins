@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "validate": "node ./scripts/validate-plugins.mjs --maintainer true",
+    "build:registry": "node ./scripts/build-registry.mjs",
     "test": "node --test scripts/*.test.mjs"
   },
   "engines": {
