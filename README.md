@@ -94,9 +94,15 @@ npm run validate
 
 ---
 
-## 鸣谢
+## 鸣谢与社区共建 (Acknowledgements)
 
-特别感谢 **[LINUX DO 社区 (https://linux.do)](https://linux.do)** 佬友们的支持与分享！
+本项目及插件生态在构思、打磨与开发过程中，深受 **[LINUX DO 社区 (https://linux.do)](https://linux.do)** 浓厚的技术分享氛围与众多佬友开源实践的启发。
+
+在此特别感谢 **[LINUX DO (https://linux.do)](https://linux.do)** 社区以及所有热爱折腾多服务器运维、远程开发与 AI 辅助编程的佬友们！欢迎各位佬友提交自己的 `-community` 插件 PR，一起丰富纯 SSH 远程工作台生态！
+
+> **真诚、友善、团结、专业，共建你我引以为荣之社区 —— [https://linux.do](https://linux.do)**
+
+---
 
 ## 开源协议
 
