@@ -1,40 +1,15 @@
 {
   "id": "docker-devops",
   "name": "Docker 远程运维管理",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "ssh4work",
   "category": "devops",
-  "description": "完整 Docker 管理标签页：容器启停/进Shell/日志/详情/删除、镜像拉取清理、Compose 栈与实时 Stats",
+  "description": "完整 Docker 管理标签页（容器/镜像/Compose/网络/卷、进Shell、实时日志、启停删除、多服务器切换）",
   "tab": {
     "id": "docker",
     "label": "Docker",
     "agentType": "docker",
     "requiresServer": true
   },
-  "quickCommands": [
-    {
-      "id": "docker-ps",
-      "name": "容器列表 (ps)",
-      "command": "docker ps -a --format 'table {{.Names}}\\t{{.Status}}\\t{{.Ports}}'; echo; read -n 1 -s -r -p '按任意键退出...'",
-      "dir": "~"
-    },
-    {
-      "id": "docker-stats",
-      "name": "容器实时资源 (stats)",
-      "command": "docker stats",
-      "dir": "~"
-    },
-    {
-      "id": "docker-compose-ls",
-      "name": "Compose 项目列表",
-      "command": "docker compose ls --all; echo; read -n 1 -s -r -p '按任意键退出...'",
-      "dir": "~"
-    },
-    {
-      "id": "docker-df",
-      "name": "Docker 磁盘占用",
-      "command": "docker system df; echo; read -n 1 -s -r -p '按任意键退出...'",
-      "dir": "~"
-    }
-  ]
+  "quickCommands": []
 }
