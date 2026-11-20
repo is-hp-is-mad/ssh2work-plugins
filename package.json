@@ -1,0 +1,14 @@
+{
+  "name": "ssh2work-plugins",
+  "version": "1.0.0",
+  "description": "Official & community plugin registry for ssh2work (categorized plugins with automated PR validation).",
+  "type": "module",
+  "scripts": {
+    "validate": "node ./scripts/validate-plugins.mjs --maintainer true",
+    "test": "node --test scripts/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "license": "MIT"
+}

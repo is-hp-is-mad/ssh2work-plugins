@@ -1,0 +1,14 @@
+node_modules/
+keys/
+*.pem
+*.key
+*.ppk
+*.pub
+.claude-vps/
+profiles.json
+*.local.json
+.env
+.env.*
+.DS_Store
+Thumbs.db
+*.log

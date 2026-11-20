@@ -1,0 +1,23 @@
+{
+  "id": "docker-devops",
+  "name": "Docker 远程运维工具箱",
+  "version": "1.0.0",
+  "author": "ssh2work",
+  "category": "devops",
+  "description": "常用 Docker 容器状态巡检与实时资源监控快捷指令集",
+  "tab": null,
+  "quickCommands": [
+    {
+      "id": "docker-ps",
+      "name": "容器列表 (ps)",
+      "command": "docker ps -a --format 'table {{.Names}}\\t{{.Status}}\\t{{.Ports}}'; echo; read -n 1 -s -r -p '按任意键退出...'",
+      "dir": "~"
+    },
+    {
+      "id": "docker-stats",
+      "name": "容器实时资源",
+      "command": "docker stats",
+      "dir": "~"
+    }
+  ]
+}

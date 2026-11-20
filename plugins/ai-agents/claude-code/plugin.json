@@ -1,0 +1,28 @@
+{
+  "id": "claude-code",
+  "name": "Claude Code 助手",
+  "version": "1.1.0",
+  "author": "ssh2work",
+  "category": "ai-agents",
+  "description": "会话查找/预览/恢复/分叉，以及 Token 统计(缓存率/分时段/模型差异标红)",
+  "tab": {
+    "id": "sessions",
+    "label": "Claude Code",
+    "agentType": "claude",
+    "requiresServer": true
+  },
+  "quickCommands": [
+    {
+      "id": "plugin-claude-new",
+      "name": "Claude 新会话",
+      "command": "claude",
+      "dir": ""
+    },
+    {
+      "id": "plugin-claude-cont",
+      "name": "Claude 继续",
+      "command": "claude --continue",
+      "dir": ""
+    }
+  ]
+}

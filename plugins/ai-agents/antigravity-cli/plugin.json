@@ -1,0 +1,28 @@
+{
+  "id": "antigravity-cli",
+  "name": "Antigravity CLI (AGY)",
+  "version": "1.0.0",
+  "author": "ssh2work",
+  "category": "ai-agents",
+  "description": "扫描 ~/.gemini/antigravity-cli/brain 会话，支持搜索、预览与 agy 恢复",
+  "tab": {
+    "id": "agy",
+    "label": "AGY",
+    "agentType": "agy",
+    "requiresServer": true
+  },
+  "quickCommands": [
+    {
+      "id": "plugin-agy-new",
+      "name": "AGY 新会话",
+      "command": "agy",
+      "dir": ""
+    },
+    {
+      "id": "plugin-agy-cont",
+      "name": "AGY 继续 (-c)",
+      "command": "agy -c",
+      "dir": ""
+    }
+  ]
+}

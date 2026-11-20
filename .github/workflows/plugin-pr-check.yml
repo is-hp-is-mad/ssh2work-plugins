@@ -1,0 +1,130 @@
+name: Plugin Registry PR Check
+
+on:
+  pull_request_target:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  validate-plugins:
+    name: Validate Plugin IDs & Community Rules
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout base repository (trusted)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run validator unit tests
+        run: npm test
+
+      - name: Check PR author permissions dynamically
+        if: github.event_name == 'pull_request_target'
+        id: auth
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prAuthor = context.payload.pull_request.user.login;
+            const assoc = context.payload.pull_request.author_association || '';
+            let isMaintainer = false;
+            let source = 'third-party';
+
+            try {
+              const { data } = await github.rest.repos.getCollaboratorPermissionLevel({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                username: prAuthor,
+              });
+              if (['admin', 'maintain', 'write'].includes(data.permission)) {
+                isMaintainer = true;
+                source = `collaborator:${data.permission}`;
+              } else {
+                source = `collaborator:${data.permission}`;
+              }
+            } catch (err) {
+              // Fallback to author_association if collaborator endpoint is restricted
+              if (['OWNER', 'MEMBER', 'COLLABORATOR'].includes(assoc)) {
+                isMaintainer = true;
+                source = `association:${assoc}`;
+              } else {
+                source = `association:${assoc || 'NONE'}`;
+              }
+            }
+
+            core.info(`PR Author: ${prAuthor}, isMaintainer=${isMaintainer} (${source})`);
+            core.setOutput('author', prAuthor);
+            core.setOutput('is_maintainer', String(isMaintainer));
+
+      - name: Fetch PR head ref (read-only JSON inspection)
+        if: github.event_name == 'pull_request_target'
+        run: |
+          git fetch origin "refs/pull/${{ github.event.pull_request.number }}/head:refs/remotes/origin/pr-head"
+
+      - name: Validate plugins in PR
+        if: github.event_name == 'pull_request_target'
+        id: validate
+        continue-on-error: true
+        run: |
+          node ./scripts/validate-plugins.mjs \
+            --base "origin/${{ github.event.pull_request.base.ref }}" \
+            --head "refs/remotes/origin/pr-head" \
+            --maintainer "${{ steps.auth.outputs.is_maintainer }}" \
+            --author "${{ steps.auth.outputs.author }}" \
+            --json-out validation-result.json
+
+      - name: Validate full repository on push
+        if: github.event_name == 'push'
+        run: node ./scripts/validate-plugins.mjs --maintainer true
+
+      - name: Post bot comment & enforce PR status
+        if: github.event_name == 'pull_request_target'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const marker = '<!-- ssh2work-plugins-bot -->';
+            const result = JSON.parse(fs.readFileSync('validation-result.json', 'utf8'));
+            const body = `${marker}\n${result.summaryMarkdown}`;
+
+            const issueNumber = context.payload.pull_request.number;
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              per_page: 100,
+            });
+
+            const existing = comments.find(
+              (c) => c.user?.type === 'Bot' && c.body?.includes(marker)
+            );
+
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body,
+              });
+            }
+
+            if (!result.ok) {
+              core.setFailed('Plugin validation failed. Please check the bot comment on this PR.');
+            }

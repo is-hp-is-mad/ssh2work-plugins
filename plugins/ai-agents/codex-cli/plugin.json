@@ -1,0 +1,28 @@
+{
+  "id": "codex-cli",
+  "name": "Codex CLI 助手",
+  "version": "1.0.0",
+  "author": "ssh2work",
+  "category": "ai-agents",
+  "description": "扫描 ~/.codex/sessions 会话，支持搜索、预览与 codex resume 恢复",
+  "tab": {
+    "id": "codex",
+    "label": "Codex",
+    "agentType": "codex",
+    "requiresServer": true
+  },
+  "quickCommands": [
+    {
+      "id": "plugin-codex-new",
+      "name": "Codex 新会话",
+      "command": "codex",
+      "dir": ""
+    },
+    {
+      "id": "plugin-codex-last",
+      "name": "Codex 继续上次",
+      "command": "codex resume --last",
+      "dir": ""
+    }
+  ]
+}
