@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-20T13:00:15.935Z",
+  "updatedAt": "2026-11-20T13:14:44.994Z",
   "plugins": [
     {
       "id": "antigravity-cli",
@@ -149,12 +149,17 @@
     },
     {
       "id": "docker-devops",
-      "name": "Docker 远程运维工具箱",
-      "version": "1.0.0",
+      "name": "Docker 远程运维管理",
+      "version": "1.1.0",
       "author": "ssh4work",
       "category": "devops",
-      "description": "常用 Docker 容器状态巡检与实时资源监控快捷指令集",
-      "tab": null,
+      "description": "完整 Docker 管理标签页：容器启停/进Shell/日志/详情/删除、镜像拉取清理、Compose 栈与实时 Stats",
+      "tab": {
+        "id": "docker",
+        "label": "Docker",
+        "agentType": "docker",
+        "requiresServer": true
+      },
       "quickCommands": [
         {
           "id": "docker-ps",
@@ -164,8 +169,20 @@
         },
         {
           "id": "docker-stats",
-          "name": "容器实时资源",
+          "name": "容器实时资源 (stats)",
           "command": "docker stats",
+          "dir": "~"
+        },
+        {
+          "id": "docker-compose-ls",
+          "name": "Compose 项目列表",
+          "command": "docker compose ls --all; echo; read -n 1 -s -r -p '按任意键退出...'",
+          "dir": "~"
+        },
+        {
+          "id": "docker-df",
+          "name": "Docker 磁盘占用",
+          "command": "docker system df; echo; read -n 1 -s -r -p '按任意键退出...'",
           "dir": "~"
         }
       ],
